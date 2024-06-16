@@ -76,22 +76,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         cameraExecutor = Executors.newSingleThreadExecutor()
-
-        checkCamDevices()
-    }
-
-    private fun checkCamDevices() {
-        val manager = getSystemService(CAMERA_SERVICE) as CameraManager
-        try {
-            for (cameraId in manager.cameraIdList) {
-                val chars = manager.getCameraCharacteristics(cameraId)
-                // Do something with the characteristics
-                val deviceLevel = chars.get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL)!!
-                Log.d(TAG, " **** device [$cameraId] level:$deviceLevel")
-            }
-        } catch (e: CameraAccessException) {
-            e.printStackTrace()
-        }
     }
 
     @OptIn(ExperimentalCamera2Interop::class)
