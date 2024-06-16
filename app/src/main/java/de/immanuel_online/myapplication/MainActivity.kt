@@ -2,9 +2,7 @@ package de.immanuel_online.myapplication
 
 import android.Manifest
 import android.content.pm.PackageManager
-import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraCharacteristics
-import android.hardware.camera2.CameraManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -15,29 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.camera2.interop.ExperimentalCamera2Interop
 import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageCapture
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.video.Recorder
-import androidx.camera.video.Recording
-import androidx.camera.video.VideoCapture
 import androidx.core.content.ContextCompat
 import androidx.core.util.toRange
 import de.immanuel_online.myapplication.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-
-typealias LumaListener = (luma: Double) -> Unit
-
 class MainActivity : AppCompatActivity() {
     private lateinit var viewBinding: ActivityMainBinding
-
-    private var imageCapture: ImageCapture? = null
-
-    private var videoCapture: VideoCapture<Recorder>? = null
-    private var recording: Recording? = null
-
     private lateinit var cameraExecutor: ExecutorService
 
     private val activityResultLauncher =
