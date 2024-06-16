@@ -1,10 +1,10 @@
 # TODO
 
-- Permanent Cookies
 - Camera Friendly names
 - filter camera list (optional)
 - run in background
 - custom meeting url
+- replace fixed orientation with webview persistence and button to lock rotation
 
 
 # Backlog
