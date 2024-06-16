@@ -22,6 +22,7 @@ import androidx.camera.video.Recorder
 import androidx.camera.video.Recording
 import androidx.camera.video.VideoCapture
 import androidx.core.content.ContextCompat
+import androidx.core.util.toRange
 import de.immanuel_online.myapplication.databinding.ActivityMainBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
 
             // Preview
             val preview = Preview.Builder()
+                .setTargetFrameRate((30..60).toRange())
                 .build()
                 .also {
                     it.setSurfaceProvider(viewBinding.viewFinder.surfaceProvider)
@@ -112,7 +114,8 @@ class MainActivity : AppCompatActivity() {
             val cameraSelector = CameraSelector.Builder()
                 .addCameraFilter { possibleList ->
                     possibleList.filter {
-                        Camera2CameraInfo.from(it).getCameraCharacteristic(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) == CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_EXTERNAL
+                        Camera2CameraInfo.from(it)
+                            .getCameraCharacteristic(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL) == CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL_EXTERNAL
                     }.toMutableList()
                 }.build()
 
