@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/uiFragment">
+    <fragment
+        android:id="@+id/uiFragment"
+        android:name="de.immanuel_online.myapplication.UiFragment"
+        android:label="main_ui"
+        tools:layout="@layout/main_ui" >
+        <action
+            android:id="@+id/openWeb"
+            app:destination="@id/webFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="de.immanuel_online.myapplication.WebFragment"
+        android:label="teams"
+        tools:layout="@layout/teams" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue="https://teams.microsoft.com/" />
+    </fragment>
+</navigation>
